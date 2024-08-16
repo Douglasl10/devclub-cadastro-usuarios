@@ -1,4 +1,5 @@
 import { useRef } from 'react'
+import { useNavigate } from 'react-router-dom'
 import api from '../../services/api.js'
 
 import {
@@ -11,7 +12,7 @@ import {
 } from "./styles"
 
 import Button from '../../components/Button'
-import TopBackground from '../../components/Button/TopBackgraound/index.jsx'
+import TopBackground from '../../components/TopBackground/index.jsx'
 
 function Home() {
 
@@ -19,7 +20,9 @@ function Home() {
   const inputAge = useRef()
   const inputEmail = useRef()
 
-  async function registerNewUser(){
+  const navigate = useNavigate()
+
+  async function registerNewUser() {
 
     await api.post('/usuarios', {
 
@@ -27,14 +30,14 @@ function Home() {
       age: parseInt(inputAge.current.value),
       name: inputName.current.value,
     })
-
+     navigate('/lista-de-usuarios')
 
   }
 
   return (
 
     <Container>
-      <TopBackground/>
+      <TopBackground />
 
       <Form>
         <Title>Cadastrar Usuario</Title>
@@ -66,9 +69,11 @@ function Home() {
 
 
 
-        <Button type='button' onClick={registerNewUser}>Cadastro Usuario</Button>
+        <Button type='button' onClick={registerNewUser} theme='primary'>Cadastro Usuario</Button>
 
       </Form>
+
+      <Button type='button' onClick={() => navigate('/lista-de-usuarios')}>Ver Lista dee Usuario</Button>
 
     </Container>
 
