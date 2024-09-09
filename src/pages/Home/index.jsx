@@ -73,7 +73,7 @@ function Home() {
 
       </Form>
 
-      <Button type='button' onClick={() => navigate('/lista-de-usuarios')}>Ver Lista dee Usuario</Button>
+      <Button type='button' onClick={() => navigate('/lista-de-usuarios')}>Ver Lista de Usuario</Button>
 
     </Container>
 
